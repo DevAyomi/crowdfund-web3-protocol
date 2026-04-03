@@ -36,8 +36,8 @@ app.use((req, res) => {
 });
 
 // ── Boot ──────────────────────────────────────────────────────
-app.listen(PORT, async () => {
-    console.log(`\n🚀 API running on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", async () => {
+    console.log(`\n🚀 API running on port ${PORT}`);
     console.log(`📡 Environment: ${process.env.NODE_ENV || "development"}\n`);
 
     try {
