@@ -7,7 +7,7 @@ const { startListener } = require("./listener");
 const campaignRoutes    = require("./routes/campaigns");
 
 const app  = express();
-const PORT = process.env.PORT || 3001;
+const PORT = parseInt(process.env.PORT || "3001", 10);
 
 // ── Middleware ────────────────────────────────────────────────
 app.use(cors());
@@ -22,7 +22,8 @@ app.use((req, res, next) => {
 // ── Routes ────────────────────────────────────────────────────
 app.use("/api/campaigns", campaignRoutes);
 
-app.get("/health", (req, res) => {
+// Railway often checks / for health if not configured otherwise
+app.get(["/", "/health"], (req, res) => {
     res.json({
         success: true,
         message: "Crowdfund API is running",
@@ -36,8 +37,8 @@ app.use((req, res) => {
 });
 
 // ── Boot ──────────────────────────────────────────────────────
-app.listen(PORT, async () => {
-    console.log(`\n🚀 API running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", async () => {
+    console.log(`\n🚀 API strictly bound to 0.0.0.0 on port ${PORT}`);
     console.log(`📡 Environment: ${process.env.NODE_ENV || "development"}\n`);
 
     try {
