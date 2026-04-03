@@ -1,10 +1,14 @@
 {
   "name": "crowdfund",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm start --workspace=@crowdfund/backend",
+    "dev:backend": "npm run dev --workspace=@crowdfund/backend",
+    "dev:frontend": "npm run dev --workspace=frontend"
   },
   "keywords": [],
   "author": "",
