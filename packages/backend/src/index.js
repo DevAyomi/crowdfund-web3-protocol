@@ -7,7 +7,7 @@ const { startListener } = require("./listener");
 const campaignRoutes    = require("./routes/campaigns");
 
 const app  = express();
-const PORT = parseInt(process.env.PORT || "3001", 10);
+const PORT = parseInt(process.env.PORT || "8080", 10);
 
 // ── Middleware ────────────────────────────────────────────────
 app.use(cors());
