@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  
+  --card: 240 10% 6%;
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 240 10% 4%;
+  --popover-foreground: 0 0% 98%;
+  
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+  
+  --secondary: 240 5% 15%;
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 240 5% 15%;
+  --muted-foreground: 240 5% 65%;
+  
+  --accent: 262 83% 58%;
+  --accent-foreground: 210 40% 98%;
+  
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 240 5% 15%;
+  --input: 240 5% 15%;
+  --ring: 221 83% 53%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  
+  --color-border: hsl(var(--border));
+  
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #60a5fa, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
