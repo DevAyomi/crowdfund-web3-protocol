@@ -31,22 +31,32 @@ export interface Contribution {
 export async function getCampaigns(
     status?: "active" | "successful" | "failed"
 ): Promise<Campaign[]> {
-    const url = status
-        ? `${API_URL}/api/campaigns?status=${status}`
-        : `${API_URL}/api/campaigns`;
+    try {
+        const url = status
+            ? `${API_URL}/api/campaigns?status=${status}`
+            : `${API_URL}/api/campaigns`;
 
-    const res = await fetch(url, { next: { revalidate: 30 } });
-    if (!res.ok) throw new Error("Failed to fetch campaigns");
-    const data = await res.json();
-    return data.data;
+        const res = await fetch(url, { next: { revalidate: 30 } });
+        if (!res.ok) return [];
+        const data = await res.json();
+        return data.data ?? [];
+    } catch (err) {
+        console.error("[API] getCampaigns failed:", err);
+        return [];
+    }
 }
 
 // Fetch single campaign with contributions
-export async function getCampaign(address: string): Promise<Campaign> {
-    const res = await fetch(`${API_URL}/api/campaigns/${address}`, {
-        next: { revalidate: 10 }
-    });
-    if (!res.ok) throw new Error("Campaign not found");
-    const data = await res.json();
-    return data.data;
+export async function getCampaign(address: string): Promise<Campaign | null> {
+    try {
+        const res = await fetch(`${API_URL}/api/campaigns/${address}`, {
+            next: { revalidate: 10 }
+        });
+        if (!res.ok) return null;
+        const data = await res.json();
+        return data.data ?? null;
+    } catch (err) {
+        console.error("[API] getCampaign failed:", err);
+        return null;
+    }
 }
