@@ -1,0 +1,21 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+remappings = [
+  "@openzeppelin/=lib/openzeppelin-contracts/"
+]
+
+# Automatically loads your .env file
+dotenv = ".env"
+
+[rpc_endpoints]
+anvil       = "http://127.0.0.1:8545"
+sepolia     = "${SEPOLIA_RPC_URL}"
+base_sepolia = "${BASE_SEPOLIA_RPC_URL}"
+base        = "${BASE_RPC_URL}"
+
+[etherscan]
+sepolia      = { key = "${ETHERSCAN_API_KEY}", chain = 11155111 }
+base_sepolia = { key = "${BASESCAN_API_KEY}",  chain = 84532    }
+base         = { key = "${BASESCAN_API_KEY}",  chain = 8453     }

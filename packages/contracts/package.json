@@ -1,0 +1,11 @@
+{
+    "name": "@crowdfund/contracts",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "forge build",
+      "test": "forge test",
+      "export": "node script/export-abis.js",
+      "deploy:anvil":   "forge script script/Deploy.s.sol:Deploy --rpc-url anvil --broadcast -vvvv",
+      "deploy:sepolia": "forge script script/Deploy.s.sol:Deploy --rpc-url sepolia --broadcast --verify -vvvv"
+    }
+  }
