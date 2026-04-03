@@ -1,13 +1,12 @@
-"use client";
-
+import type { Metadata } from "next";
 import "./globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { WagmiProvider } from "wagmi";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { config } from "@/lib/wagmi";
+import Providers from "@/components/Providers";
 
-const queryClient = new QueryClient();
+export const metadata: Metadata = {
+  title: "CrowdFund | Decentralized Crowdfunding on Ethereum",
+  description: "A premium, trustless crowdfunding protocol. Launch campaigns, raise funds, and contribute globally with zero fees.",
+};
 
 export default function RootLayout({
   children,
@@ -17,13 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <WagmiProvider config={config}>
-          <QueryClientProvider client={queryClient}>
-            <RainbowKitProvider>
-              {children}
-            </RainbowKitProvider>
-          </QueryClientProvider>
-        </WagmiProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
